@@ -1,7 +1,7 @@
-from . import hello_world
+from . import mkdir
 from . import ls
 
 COMMANDS = {
-    "hello-world": hello_world.handle,
+    "mkdir": mkdir.handle,
     "ls": ls.handle
 }
