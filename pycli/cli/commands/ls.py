@@ -3,20 +3,22 @@ from pathlib import Path
 from rich.console import Console
 from rich.columns import Columns
 
-from .constants import (
-    WITH_HIDDEN_GLOB,
-    WITHOUT_HIDDEN_GLOB,
-    DIRECTORY_FORMAT,
-    FILE_FORMAT
-)
+DIRECTORY_FORMAT = "[magenta][bold]{}"
+FILE_FORMAT = "{}"
+
+WITH_HIDDEN_GLOB_PATTERN = "*"
+WITHOUT_HIDDEN_GLOB_PATTERN = "[!.]*"
 
 
 def handle(
     path: str = typer.Argument("."),
     show_hidden: bool = typer.Option(False)
 ):
-    glob = WITH_HIDDEN_GLOB if show_hidden else WITHOUT_HIDDEN_GLOB
-    files = [__format__(item) for item in Path(path).glob(glob)]
+    glob_pattern = (
+        WITH_HIDDEN_GLOB_PATTERN if show_hidden
+        else WITHOUT_HIDDEN_GLOB_PATTERN
+    )
+    files = [__format__(item) for item in Path(path).glob(glob_pattern)]
     columns = Columns(files, equal=True, expand=True)
     Console().print(columns)
 
