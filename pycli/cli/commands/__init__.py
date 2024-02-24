@@ -1,7 +1,9 @@
 from . import mkdir
 from . import ls
+from . import cat
 
 COMMANDS = {
-    "mkdir": mkdir.handle,
-    "ls": ls.handle
+    "cat": cat.handle,
+    "ls": ls.handle,
+    "mkdir": mkdir.handle
 }
