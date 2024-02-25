@@ -13,16 +13,17 @@ def files():
     return [dir_mock, file_mock]
 
 
-def test_ls(capfd, files):
-    with mock.patch('pathlib.Path.glob', return_value=files, autospec=True):
-        handle('.')
+@mock.patch("pathlib.Path.glob", return_value=files, autospec=True)
+def test_ls(mock_glob, capfd, files):
+    mock_glob.return_value = files
+    handle()
     out, _ = capfd.readouterr()
     assert files[0].name in out
     assert files[1].name in out
 
 
-def test_ls_with_empty_results(capfd):
-    with mock.patch('pathlib.Path.glob', return_value=[], autospec=True):
-        handle('.')
+@mock.patch("pathlib.Path.glob", return_value=[], autospec=True)
+def test_ls_with_empty_results(_, capfd):
+    handle()
     out, _ = capfd.readouterr()
     assert not out
