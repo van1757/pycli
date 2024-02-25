@@ -2,11 +2,15 @@ import typer
 
 from pycli.cli.commands import COMMANDS
 
-app = typer.Typer()
 
-for name, handler in COMMANDS.items():
-    app.command(name)(handler)
+class Cli():
+    def __init__(self) -> None:
+        self.app = typer.Typer()
 
+    def run(self) -> None:
+        self.__load_commands__()
+        self.app()
 
-def init():
-    app()
+    def __load_commands__(self) -> None:
+        for name, handler in COMMANDS.items():
+            self.app.command(name)(handler)

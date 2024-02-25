@@ -1,4 +1,4 @@
-from pycli.cli import core
+from pycli.cli.core import Cli
 
 if __name__ == "__main__":
-    core.init()
+    Cli().run()
