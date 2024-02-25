@@ -5,18 +5,21 @@ from pycli.cli.commands.wc import handle
 
 
 @pytest.fixture
-def mocks():
-    mock_file = mock.create_autospec(TextIOWrapper)
-    file_content = ["First Line", "Second Line", "Third Line"]
-    mock_file.__enter__.return_value.__iter__.return_value = file_content
-    mock_file.__enter__.return_value.name = "test_file"
-    return mock_file
+def file_content():
+    return ["First Line", "Second Line", "Third Line"]
+
+
+@pytest.fixture
+def file_mock(file_content):
+    file = mock.create_autospec(TextIOWrapper)
+    file.__enter__.return_value.__iter__.return_value = file_content
+    file.__enter__.return_value.name = "test_file"
+    return file
 
 
 @mock.patch("pycli.cli.commands.wc.open_file")
-def test_cat(mock_open, capfd, mocks):
-    mock_file = mocks
-    mock_open.return_value = mock_file
+def test_wc(mock_open, capfd, file_mock):
+    mock_open.return_value = file_mock
     handle("test_folder/file")
     out, _ = capfd.readouterr()
     mock_open.assert_called_with("test_folder/file")
