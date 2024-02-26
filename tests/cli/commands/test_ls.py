@@ -1,6 +1,8 @@
-import pytest
 from pathlib import Path
 from unittest import mock
+
+import pytest
+
 from pycli.cli.commands.ls import handle
 
 

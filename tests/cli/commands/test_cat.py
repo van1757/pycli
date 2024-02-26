@@ -1,16 +1,18 @@
-import pytest
 from io import TextIOWrapper
 from unittest import mock
+
+import pytest
+
 from pycli.cli.commands.cat import handle
 
 
 @pytest.fixture
 def file_content():
-    return '''
+    return """
         First Line
         Second Line
         Third Line
-    '''
+    """
 
 
 @pytest.fixture

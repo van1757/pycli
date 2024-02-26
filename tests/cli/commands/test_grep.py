@@ -1,6 +1,8 @@
-import pytest
 import io
 from unittest import mock
+
+import pytest
+
 from pycli.cli.commands.grep import handle
 
 

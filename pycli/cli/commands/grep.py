@@ -1,15 +1,14 @@
-import typer
-import sys
 import re
-from typing_extensions import Annotated
+import sys
+from typing import Annotated
+
+import typer
 from rich.console import Console
 
 HIGHLIGHT_PATTERN = r"[red bold]\1[/red bold]"
 
 
-def handle(
-    search_str: Annotated[str, typer.Argument()]
-):
+def handle(search_str: Annotated[str, typer.Argument()]):
     regexp_pattern = f"({search_str})"
     for line in sys.stdin:
         if re.search(search_str, line):

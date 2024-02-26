@@ -1,10 +1,4 @@
-from . import mkdir
-from . import ls
-from . import cat
-from . import tail
-from . import less
-from . import wc
-from . import grep
+from . import cat, grep, less, ls, mkdir, tail, wc
 
 COMMANDS = {
     "cat": cat.handle,
@@ -13,5 +7,5 @@ COMMANDS = {
     "ls": ls.handle,
     "mkdir": mkdir.handle,
     "tail": tail.handle,
-    "wc": wc.handle
+    "wc": wc.handle,
 }

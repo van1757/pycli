@@ -3,7 +3,7 @@ import sys
 
 ERROR_TYPES = {
     FileNotFoundError: "No such file or directory: '{filename}'",
-    IsADirectoryError: "Is a directory: '{filename}'"
+    IsADirectoryError: "Is a directory: '{filename}'",
 }
 
 
@@ -18,7 +18,5 @@ def open_file(path: str):
 
 def __handle_error__(err: OSError):
     error_message = ERROR_TYPES.get(err.__class__, err.__str__())
-    print(
-        error_message.format(filename=err.filename)
-    )
+    print(error_message.format(filename=err.filename))
     sys.exit(err.errno)

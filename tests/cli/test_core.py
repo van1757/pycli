@@ -1,7 +1,10 @@
+from unittest import mock
+
 import pytest
 import typer
-from unittest import mock
+
 from pycli.cli.core import Cli
+
 
 @pytest.fixture()
 def app_mock():
@@ -16,7 +19,8 @@ def test_Cli_run_with_commands(app_mock):
     app_mock.command.assert_called_with("test")
     app_mock.command().assert_called_with("value")
     app_mock.assert_called_once()
-    
+
+
 @mock.patch("pycli.cli.core.COMMANDS", {})
 def test_Cli_run_without_commands(app_mock):
     Cli().run()

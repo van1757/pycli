@@ -3,7 +3,7 @@ import typer
 from pycli.cli.commands import COMMANDS
 
 
-class Cli():
+class Cli:
     def __init__(self) -> None:
         self.app = typer.Typer()
 

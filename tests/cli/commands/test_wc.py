@@ -1,6 +1,8 @@
-import pytest
 from io import TextIOWrapper
 from unittest import mock
+
+import pytest
+
 from pycli.cli.commands.wc import handle
 
 
