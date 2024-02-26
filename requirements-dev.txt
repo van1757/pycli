@@ -2,7 +2,6 @@
 altgraph==0.17.4
 certifi==2024.2.2
 charset-normalizer==3.3.2
-Cython==3.0.8
 docutils==0.20.1
 idna==3.6
 importlib-metadata==7.0.1
